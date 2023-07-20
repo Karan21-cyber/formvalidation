@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Validation from "./component/Validation";
 
-function Form() {
+function ResuableFormData() {
   const [values, setValues] = useState({
     username: "",
     email: "",
@@ -11,6 +11,7 @@ function Form() {
   });
 
   const [errors, setErrors] = useState({});
+  
 
   const handleInput = (event) => {
     const newObj = { ...values, [event.target.name]: event.target.value };
@@ -21,8 +22,8 @@ function Form() {
     event.preventDefault();
     const ValidationErrors = Validation(values);
     setErrors(ValidationErrors);
-    if(Object.keys(ValidationErrors).length === 0){
-        console.log(values);
+    if (Object.keys(ValidationErrors).length === 0) {
+      console.log(values);
     }
   };
 
@@ -49,7 +50,7 @@ function Form() {
             placeholder="Enter your email"
             onChange={handleInput}
             value={values.email}
-         />
+          />
           {errors.email && <span className="error">{errors.email}</span>}
         </div>
 
@@ -85,7 +86,6 @@ function Form() {
             placeholder="Enter your password"
             onChange={handleInput}
             value={values.confirmpassword}
-            
           />
           {errors.confirmpassword && (
             <span className="error">{errors.confirmpassword}</span>
@@ -101,4 +101,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default ResuableFormData;
